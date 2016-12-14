@@ -1,0 +1,46 @@
+simple_ui   is a ***basic app for rendering xml commands and data sets (name-value pairs).
+
+
+1 - This app requires a configuration properties file to reside in /opt/config named simple_ui.properties
+    A sample simple_ui.properties is located in this directory for your reference. Modify the
+    properties file as desired and copy to /opt/config.
+
+    n.b. the installation script found in the directory does NOT include copying properties files.
+
+
+2 - Installation on Apache presupposes that this app will live in its own  subdirectory under the root -
+        i.e.  /var/www/simple_ui
+
+        From your simple_ui working directory, you can run the installation script to create the simple_ui subdirectory
+        and unzip the files:
+                   ./README/Simple_UI_Installer
+
+
+Dev/Maintenance notes:
+----------------------
+***The core of this app was based on https://github.com/preboot/angular2-webpack. Be sure to check
+the GIT sources for changes going forward.
+
+You must have node & npm installed on your machine.
+
+Note that the Subversion archive contains neither the "dist" directory nor the node_modules directory.
+After checking simple_ui out from Subversion, you will need to cd to the simple_ui directory:
+  npm cache clean (after installation, use: npm run clean)
+  npm install
+  npm run build
+
+The package.json file has static versions. This is to prevent getting caught in a web of potential
+dependency conflicts. Check the site indicated above if you have questions about compatibility.
+"package-future-dev.json" contains the original versioning used before locking versions.
+
+Pulled in some angular2 material style sheets. If you wish to work with SCSS, you will need to  install software to convert the SCSS to CSS:
+        >  sudo npm install -g node-sass
+     If you choose to do so, you can then run node-sass and configure watch so any scss files are automatically converted to css.
+     Aside: if you work with angular cli, angular will watch and transpile the scss files
+     if you include them in an angularcli.json.
+Alternatively, you can reference (or copy parts of) the prebuilt style sheets found under:
+ node_modules/@angular/material/core/theming/prebuilt/
+
+
+
+

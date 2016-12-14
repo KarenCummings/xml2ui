@@ -1,0 +1,41 @@
+<table class="tableTop"  width="100%">
+    <tr style="width: inherit; border: hidden">
+        <th class="thTop" style="padding-right: 15px; border:hidden"><img src="{{_appDir }}images/vionx-energy-logo-2.png" alt="Vionx logo"/></th>
+        <th>
+            <table class="tableTop"  width="100%">
+                <tr style="width: inherit; border: hidden">
+                    <table><tr>
+                    <th class="thTop" style="width:80%; font-size:20px; border:hidden; align-items: left;">{{ _appTitle }}</th>
+                    <td style="font-size: 12px; width: inherit; text-align: right; alignment: right; border: hidden"   title="_serverStatus" >
+                        <input id="dbPulse" type="button"/>
+                    </td>
+                    <td style="text-align: right; alignment: right; font-size: 10px; width: inherit; border: hidden">
+                        <div id="updateTime">time</div>
+                    </td>
+                    </tr></table>
+                </tr>
+                <tr>
+                    <table style="width: inherit; border: hidden;">
+                        <tr>
+                            <td style="width: 80%;">
+                                <table>
+                                    <th *ngFor="let e of _props.appLink ">
+                                        <a [href]="e.url" target="_blank" [title]="e.tooltip">{{e.name}}</a>&nbsp;&nbsp;
+                                    </th>
+                                </table>
+                            </td>
+                            <td style="alignment: right;"><div style="alignment: right;" id="title-version">title-version</div></td>
+                        </tr>
+                    </table>
+                </tr>
+            </table>
+         </th>
+        </tr>
+     </table>
+
+    <md-tab-group  (selectChange)="myTabChanged(selectedIndex)">
+        <md-tab *ngFor="let t of _props.tab" id="{{t.id}}" >
+            <template md-tab-label >{{t.name}}</template>
+            <app-tab [_uiTab]="t" [_props]="_props" ></app-tab>
+        </md-tab>
+    </md-tab-group>

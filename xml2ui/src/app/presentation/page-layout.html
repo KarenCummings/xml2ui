@@ -1,0 +1,36 @@
+
+<tbody>
+    <tr *ngIf="_Data_Summary.Section" style="width: 100%">
+        <td align="center" >
+            <table   align="left" width="300px" style="border-style: hidden; border-collapse: collapse;" >
+                <tr *ngFor="let sect of _Data_Summary.Section; let sectIdx = index">
+                    <td>
+                        <table style="border-style: hidden; border-collapse: collapse;">
+                            <tr style="border-style: hidden; border-collapse: collapse;"><th>Section: {{ sect.name }} &nbsp;<a *ngIf="sect.url" target="_blank"  href={{sect.url}} title={{sect.tooltip}}>&#x2600;</a></th></tr>
+                            <tr *ngFor="let c of sect.CmdSet" style="border-style: hidden; border-collapse: collapse;">
+                                <table style="border-style: hidden; border-collapse: collapse;">
+                                    <tr><span>{{ c.desc }}</span></tr>
+                                    <tr>
+                                         <td>
+                                            <cmd-bar [_uiTab]="_uiTab" [_commands]="c" [_props]="_props" [_popupDialog_L2]="_popupDialog_L1"></cmd-bar>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </tr>
+                            <tr *ngFor="let dataset of sect.DataSets; let dataSetIdx = index" id="DataSet-{{dataSetIdx}}">
+                                <table style="border-style: hidden; border-collapse: collapse;">
+                                    <tr><span>{{ dataset.name }}<a *ngIf="dataset.url" target="_blank"  href={{dataset.url}} title={{dataset.tooltip}}> &nbsp; &#x2600;</a> </span></tr>
+                                    <tr>
+                                         <td *ngFor="let d of objToArray(dataset); let tableIdx = index" id="Table-{{dataSetIdx}}-{{tableIdx}}" [title]="d.desc" style="border-style: hidden; ">
+                                             <overview-table [_nvPairList]="addTableId(d, sectIdx, dataSetIdx, tableIdx)" [_hidden]="false"></overview-table>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</tbody>

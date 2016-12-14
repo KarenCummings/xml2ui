@@ -1,0 +1,17 @@
+<tr style="border: hidden">
+    <th *ngIf="_Data_Summary">
+        <table class="tableTop"  width="100%">
+            <tr style="width: inherit; border: hidden">
+                <th class="thTop" style="border:hidden">
+                    {{ getTitle() + " -" }}&nbsp;{{ getVersion() }}
+                </th>
+                <th style="font-size: 12px; width: inherit; text-align: right; border: hidden"   [title]="_serverStatus" >
+                    <input type="button" [class]="_refreshState"   (click)="toggleAutoRefresh()"  [value]="_autoRefreshLabel"/>
+                </th>
+            </tr>
+            <tr >
+                <td align=right  style="font-size: 10px; width: inherit; text-align: right; border: hidden">{{ getUpdateTime() }}</td>
+            </tr>
+        </table>
+    </th>
+</tr>

@@ -1,0 +1,15 @@
+#!/bin/sh
+PROJ=simple_ui
+
+echo "------------------ Starting post-build-step -----------------------"
+
+rm -r /var/www/$PROJ
+mkdir /var/www/$PROJ
+
+cp -rv dist/* /var/www/$PROJ/
+
+cd dist
+tar czvf ../dist.tgz *
+cd ..
+
+echo "------------------ Finished post-build-step -----------------------"

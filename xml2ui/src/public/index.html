@@ -1,0 +1,16 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <script>
+        var appDir = window.location.pathname;
+        var appTitle = appDir.substring(1, appDir.lastIndexOf('/'));
+        document.write("<title>" + appTitle + "</title>");
+        document.write("<link rel=\"icon\" type=\"image/x-icon\" href=\"" + appDir + "images/favicon.ico\">");
+    </script>
+    <base href="/">
+</head>
+<body>
+<my-app>Loading...</my-app>
+</body>
+</html>

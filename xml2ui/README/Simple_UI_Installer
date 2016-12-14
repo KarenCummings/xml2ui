@@ -1,0 +1,15 @@
+#!/bin/sh
+PROJ=simple_ui
+
+echo "------------------ Starting simple_ui installation -----------------------"
+
+
+if `test -d "/var/www/$PROJ"`; then
+  rm -r /var/www/$PROJ
+fi
+
+mkdir /var/www/$PROJ
+
+tar xzvf dist.tgz -C /var/www/$PROJ
+
+echo "------------------ Finished simple_ui installation  -----------------------"
